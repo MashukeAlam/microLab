@@ -62,7 +62,7 @@ const scrapeNotices = async (limit = 7) => {
 
     console.log(noticePage.length, limit);
     console.time("notice");
-    for (let i = 0; i < noticePage.length; i++) {
+    for (let i = 0; i < limit; i++) {
       const el = noticePage[i];
 
       const noticeUrl = el.attribs.href;
@@ -74,7 +74,6 @@ const scrapeNotices = async (limit = 7) => {
 
       const datePage = $$('span[class="pdate"]');
 
-      // console.time("date")
       for (let j = 0; j < datePage.length; j++) {
         const elem = datePage[j];
         currNotice.date = elem.next.data;
@@ -82,7 +81,6 @@ const scrapeNotices = async (limit = 7) => {
 				currNotice.dateUTC = new Date(stripped[3], map.get(stripped[2].substring(0, stripped[2].length - 1)), stripped[1].replace(/\D/g, ""));
         notices.push(currNotice);
       }
-      // console.timeEnd("date");
     }
 
     console.timeEnd("notice");
