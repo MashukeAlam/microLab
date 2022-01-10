@@ -9,8 +9,8 @@ app.get('/', (req, res) => {
 
 app.get('/notices', async (req, res) => {
   const scrapedNotices = await getNotices();
-  const scrapedPrayers = await getPrayerTimes();
-  console.log(scrapedNotices);
+  // const scrapedPrayers = await getPrayerTimes();
+  // console.log(scrapedNotices);
   res.json({"Notices": scrapedNotices});
 })
 
